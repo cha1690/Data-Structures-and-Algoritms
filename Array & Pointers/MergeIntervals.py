@@ -10,8 +10,8 @@ class Solution:
         result = [intervals[0]]
         intervals.sort()
         for i in range(1, len(intervals)):
-            if res[-1][1] >= interval[i][0]:
-                res[-1][1] = max(result[-1][1], intervals[i][1])
+            if result[-1][1] >= intervals[i][0]:
+                result[-1][1] = max(result[-1][1], intervals[i][1])
             else:
                 result.append(intervals[i])
         return result
