@@ -4,5 +4,11 @@ def hasCycle(head):
         slow=slow.next
         fast=fast.next.next
         if slow == fast:
+            # detecting the position
+            # slow=head
+            # while slow !=fast:
+            #     slow=slow.next
+            #     fast=fast.next
+            # return fast
             return True
     return False
