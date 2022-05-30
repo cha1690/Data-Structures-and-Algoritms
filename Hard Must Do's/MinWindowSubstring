@@ -1,0 +1,28 @@
+class Solution:
+    def minWindow(self, s: str, target: str) -> str:
+#         have 2 pointers start and end. Move the end pointer till we have covered all letters in the string. Then move the left pointer to reduce the window and figure the min length
+# iterate through the entire string
+# maintain a count of letters in target to make sure all letters are covered
+
+        start=end=0
+        to_find=len(target)
+        count_target=collections.Counter(target)
+        min_window=""
+        
+        for end in range(len(s)):
+            if count_target[s[end]]>0:
+                to_find-=1
+            count_target[s[end]]-=1
+            
+            while to_find == 0:
+                window_len = end - start + 1
+                if not min_window or window_len < len(min_window):
+                    min_window = s[start:end+1]
+                count_target[s[start]]+=1
+                
+                if count_target[s[start]] > 0:
+                    to_find+=1
+                
+                start+=1
+        return min_window
+                    
